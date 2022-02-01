@@ -19,6 +19,10 @@ public class Explode : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (didExplode) {
+
+            return;
+        }
         if (isClicked && this.myColor.a != 0)
         {
             StartCoroutine(reduceAlpha());
@@ -33,7 +37,10 @@ public class Explode : MonoBehaviour
                 if (!didExplode)
                 {
                     Instantiate(explosion, this.transform);
+
+                    ((GameObject)explosion).transform.position = this.transform.position;
                     didExplode = true;
+
                 }
             }
 
